@@ -4,15 +4,16 @@ import os
 import time
 from selenium import webdriver
 import telegram
-from token import api_token
+from token2 import api_token
+from webdriver_manager.chrome import ChromeDriverManager
 
 # 파일의 위치
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-BASE_DIR = 'C:/Users/seowoo/crawlingtest/'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))+'\\'
+print(BASE_DIR)
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
-driver = webdriver.Chrome(BASE_DIR+'chromedriver.exe', options=options)
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 driver.implicitly_wait(3)
 
 bot = telegram.Bot(token=api_token)
